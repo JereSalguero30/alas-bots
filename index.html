@@ -2,134 +2,77 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SenGo - Customer Support</title>
-  <link rel="stylesheet" href="styles.css">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-  <style>
-    body {
-      font-family: 'Roboto', sans-serif;
-    }
-
-    .chat-button {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background-color: #007bff;
-      color: white;
-      border: none;
-      border-radius: 50%;
-      width: 60px;
-      height: 60px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 24px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-      cursor: pointer;
-      z-index: 9999;
-    }
-
-    .chat-button:hover {
-      background-color: #0056b3;
-    }
-
-    .container {
-      max-width: 900px;
-      margin: auto;
-      padding: 20px;
-    }
-
-    header, footer {
-      text-align: center;
-      background: #f8f9fa;
-      padding: 30px 0;
-    }
-
-    .logo {
-      width: 120px;
-      margin-bottom: 10px;
-    }
-
-    ul {
-      padding-left: 20px;
-    }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Nexenta Shop</title>
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
+<body class="bg-gray-100 text-gray-800">
 
-  <header class="header">
-    <div class="container">
-      <img src="https://sengo.io/static/media/sengo-logo.76e67ad5.svg" alt="SenGo Logo" class="logo">
-      <h1>SenGo Customer Support</h1>
-      <p>Fast and reliable support for all your needs. Start a chat with our team today!</p>
+  <!-- Navbar -->
+  <nav class="bg-white shadow-md px-6 py-4 flex justify-between items-center">
+    <h1 class="text-2xl font-bold text-blue-600">🛒 Nexenta Shop</h1>
+    <ul class="flex space-x-6 font-semibold">
+      <li><a href="#" class="hover:text-blue-500">Inicio</a></li>
+      <li><a href="#" class="hover:text-blue-500">Productos</a></li>
+      <li><a href="#" class="hover:text-blue-500">Contacto</a></li>
+    </ul>
+    <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-500">Carrito (2)</button>
+  </nav>
+
+  <!-- Hero -->
+  <section class="text-center py-12 bg-blue-50">
+    <h2 class="text-4xl font-bold mb-2">Bienvenido a nuestra tienda</h2>
+    <p class="text-gray-600">Encuentra los mejores productos al mejor precio</p>
+  </section>
+
+  <!-- Productos -->
+  <section class="px-6 py-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+    <!-- Repite los productos según sea necesario -->
+    <!-- Ejemplo Producto -->
+    <div class="bg-white rounded-xl shadow p-4">
+      <img src="https://via.placeholder.com/300?text=Producto+1" alt="Producto 1" class="rounded mb-4">
+      <h3 class="text-lg font-semibold">Producto 1</h3>
+      <p class="text-sm text-gray-500 mb-2">Descripción breve del producto 1.</p>
+      <p class="text-blue-600 font-bold mb-2">$1250</p>
+      <button class="bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-500 w-full">Agregar al carrito</button>
     </div>
-  </header>
+    <!-- Más productos aquí... -->
+  </section>
 
-  <main>
-    <section class="about">
-      <div class="container">
-        <h2>Why Choose SenGo Support?</h2>
-        <p>We provide personalized, real-time assistance powered by Salesforce Agentforce to ensure your issues are resolved quickly and effectively.</p>
-      </div>
-    </section>
+  <!-- Embedded Messaging Script para sitios externos -->
+<script type='text/javascript'>
+  function initEmbeddedMessaging() {
+    try {
+      embeddedservice_bootstrap.settings.language = 'es';
 
-    <section class="features">
-      <div class="container">
-        <h2>Our Features</h2>
-        <ul>
-          <li>Real-time chat with professional agents.</li>
-          <li>Powered by Salesforce Agentforce for secure communication.</li>
-          <li>Available 24/7 for your convenience.</li>
-        </ul>
-      </div>
-    </section>
-  </main>
+      embeddedservice_bootstrap.init(
+        '00D1I000001UkcS', // Org ID
+        'Rapsodia_Argentina_Web_Embedded_Service_deployment', // Deployment Name
+        'https://rapsodia.my.site.com/ESWRapsodiaArgentinaWeb1745277880464', // Site URL
+        {
+          scrt2URL: 'https://rapsodia.my.salesforce-scrt.com'
+        }
+      );
+    } catch (err) {
+      console.error('Error loading Embedded Messaging: ', err);
+    }
+  }
+</script>
 
-  <footer class="footer">
-    <div class="container">
-      <p>© 2024 SenGo. All rights reserved.</p>
-    </div>
+<script 
+  src='https://service.force.com/embeddedservice/5.0/esw.min.js' 
+  onload='initEmbeddedMessaging()' 
+  defer>
+</script>
+
+
+
+  <!-- Footer -->
+  <footer class="bg-white shadow-md mt-10 p-4 text-center text-sm text-gray-500">
+    © 2025 Nexenta. Todos los derechos reservados.
   </footer>
 
-  <!-- Botón flotante de chat -->
-  <button class="chat-button" onclick="openChat()" title="Chatear">
-    💬
-  </button>
-
-  <!-- Salesforce Embedded Messaging Universal Script -->
-  <script type="text/javascript">
-    function initEmbeddedMessaging() {
-      try {
-        embeddedservice_bootstrap.settings.language = 'es';
-
-        embeddedservice_bootstrap.init(
-          '00DEc000000GWgf', // Org ID
-          'Test_1', // Deployment Name
-          'https://rapsodia--devaxxon.sandbox.my.site.com/ESWTest11736274632252', // Site Endpoint
-          {
-            scrt2URL: 'https://rapsodia--devaxxon.sandbox.my.salesforce-scrt.com'
-          }
-        );
-      } catch (err) {
-        console.error('Error loading Embedded Messaging: ', err);
-      }
-    }
-
-    function openChat() {
-      if (window.embeddedservice_bootstrap && embeddedservice_bootstrap.prechatAPI) {
-        embeddedservice_bootstrap.openChat();
-      } else {
-        console.warn('Embedded Messaging not loaded yet.');
-      }
-    }
-  </script>
-
-  <script 
-    src="https://service.force.com/embeddedservice/5.0/esw.min.js" 
-    onload="initEmbeddedMessaging()" 
-    defer>
-  </script>
+    
 
 </body>
 </html>
