@@ -45,15 +45,15 @@
   </footer>
 
   <!-- Embedded Messaging Script -->
-  <script type="text/javascript">
+  <script type='text/javascript'>
     function initEmbeddedMessaging() {
       try {
-        embeddedservice_bootstrap.settings.language = 'es';
-
+        embeddedservice_bootstrap.settings.language = 'es'; // For example, enter 'en' or 'en-US'
+  
         embeddedservice_bootstrap.init(
-          '00D1I000001UkcS', // Salesforce Org ID
-          'Rapsodia_Argentina_Web_Embedded_Service_deployment', // Deployment Name
-          'https://rapsodia.my.site.com/ESWRapsodiaArgentinaWeb1745277880464', // Site URL
+          '00D1I000001UkcS',
+          'Rapsodia_Argentina_Web_Embedded_Service_deployment',
+          'https://rapsodia.my.site.com/ESWRapsodiaArgentinaWeb1745277880464',
           {
             scrt2URL: 'https://rapsodia.my.salesforce-scrt.com'
           }
@@ -61,15 +61,10 @@
       } catch (err) {
         console.error('Error loading Embedded Messaging: ', err);
       }
-    }
+    };
   </script>
-
-  <script 
-    type="text/javascript" 
-    src="https://rapsodia.my.site.com/ESWRapsodiaArgentinaWeb1745277880464/assets/js/bootstrap.min.js" 
-    onload="initEmbeddedMessaging()" 
-    defer>
-  </script>
+  <script type='text/javascript' src='https://rapsodia.my.site.com/ESWRapsodiaArgentinaWeb1745277880464/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+  
 
 </body>
 </html>
