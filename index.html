@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
   <title>Nexenta Shop</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
@@ -28,8 +27,6 @@
 
   <!-- Productos -->
   <section class="px-6 py-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-    <!-- Repite los productos según sea necesario -->
-    <!-- Ejemplo Producto -->
     <div class="bg-white rounded-xl shadow p-4">
       <img src="https://via.placeholder.com/300?text=Producto+1" alt="Producto 1" class="rounded mb-4">
       <h3 class="text-lg font-semibold">Producto 1</h3>
@@ -37,15 +34,27 @@
       <p class="text-blue-600 font-bold mb-2">$1250</p>
       <button class="bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-500 w-full">Agregar al carrito</button>
     </div>
-    <!-- Más productos aquí... -->
   </section>
 
-  <!-- Embedded Messaging Script para sitios externos -->
-  <script type='text/javascript'>
+  <!-- Tooltip flotante -->
+  <div id="chatTooltip" class="fixed bottom-24 right-6 bg-white text-sm text-gray-800 border border-blue-600 rounded shadow-lg px-4 py-2 z-50">
+    Estoy aquí para ayudarte, ¿hablamos?
+  </div>
+
+  <!-- Botón flotante -->
+  <button 
+    class="fixed bottom-6 right-6 bg-blue-600 text-white rounded-full w-16 h-16 text-2xl shadow-lg hover:bg-blue-500"
+    onclick="openChat()"
+    title="Abrir chat de soporte">
+    💬
+  </button>
+
+  <!-- Embedded Messaging Script -->
+  <script type="text/javascript">
     function initEmbeddedMessaging() {
       try {
-        embeddedservice_bootstrap.settings.language = 'es'; // For example, enter 'en' or 'en-US'
-  
+        embeddedservice_bootstrap.settings.language = 'es';
+
         embeddedservice_bootstrap.init(
           '00D1I000001UkcS',
           'Rapsodia_Argentina_Web_Embedded_Service_deployment',
@@ -57,18 +66,34 @@
       } catch (err) {
         console.error('Error loading Embedded Messaging: ', err);
       }
-    };
-  </script>
-  <script type='text/javascript' src='https://rapsodia.my.site.com/ESWRapsodiaArgentinaWeb1745277880464/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
-  
+    }
 
+    function openChat() {
+      if (window.embeddedservice_bootstrap && embeddedservice_bootstrap.prechatAPI) {
+        embeddedservice_bootstrap.openChat();
+      } else {
+        console.warn('Chat aún no está disponible.');
+      }
+    }
+
+    // Ocultar tooltip después de unos segundos
+    setTimeout(() => {
+      const tooltip = document.getElementById('chatTooltip');
+      if (tooltip) tooltip.style.display = 'none';
+    }, 8000);
+  </script>
+
+  <script 
+    type="text/javascript" 
+    src="https://service.force.com/embeddedservice/5.0/esw.min.js" 
+    onload="initEmbeddedMessaging()" 
+    defer>
+  </script>
 
   <!-- Footer -->
   <footer class="bg-white shadow-md mt-10 p-4 text-center text-sm text-gray-500">
     © 2025 Nexenta. Todos los derechos reservados.
   </footer>
-
-    
 
 </body>
 </html>
